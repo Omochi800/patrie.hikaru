@@ -17,23 +17,23 @@ class User::PostsController < ApplicationController
 
   def edit
   end
-  
+
   def update
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
-  end  
+  end
 
   def index
-    @post = Post.all
+    @posts = Post.all
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:image,:text,:user_id)
+    params.require(:post).permit(:images,:text,:user_id)
   end
 end
