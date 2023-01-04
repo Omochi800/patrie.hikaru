@@ -1,0 +1,12 @@
+<p><%= image_tag 'jinnbutu.png',class:"rounded-circle",size:"50x50" %></p>
+<p><%= @post.user.name %></p>
+<div>
+  <p><%= image.@post.get_image,size:"150x200" %></p>
+  <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p><%= @posts.text %></p>
+  
+  <% if @post.user == current_user %>
+  <%= link_to '編集する',edit_post_path,class:'btn btn-orange-400' %>
+  <%= link_to '削除する',post_path(@post),method::delete %>
+  <% end %>
+</div>

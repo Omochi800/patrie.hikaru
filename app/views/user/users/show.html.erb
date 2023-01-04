@@ -1,0 +1,11 @@
+<%= image_tag @post.get_profile_image(100,100),class:'rounded-circle' %>
+<p><%= @user.name %></p>
+<p><%#= @user.introduction %></p>
+
+<% @posts.each do |posts| %>
+
+<div>
+  <%= link_to post_path(posts.id) do %>
+  <%= image_tag posts.get_image %>
+  <% end %>
+</div>
