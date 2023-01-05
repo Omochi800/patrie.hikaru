@@ -1,19 +1,20 @@
-<%= form_with model: @user,url: user_path(@user.id) do |f| %>
+<%= form_with model: @user,url: user_path,method: :patch do |f| %>
 <div>
-  <%= link_to 'キャンセル',user_path(@user.id) %>
-  
+  <%= link_to 'キャンセル',user_path(@user) %>
+
   <span>プロフィールを編集</span>
-  
+
   <%= f.submit '完了' %>
 </div>
 <%= image_tag @user.get_profile_image(100,100),class:'rounded-circle' %>
 <ul>
   <li>
-    <input type="text" style="border-bottom" placeholder="Name" />
+    <!--<input type="text" style="border-bottom" placeholder="Name" />
   </li>
   <li>
     <!--<input type="text" placeholder="Introduction" /> -->
   </li>
   <li></li>
 </ul>
+<% end %>
 

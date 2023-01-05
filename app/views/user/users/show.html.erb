@@ -1,11 +1,17 @@
-<%= image_tag @post.get_profile_image(100,100),class:'rounded-circle' %>
+<%= image_tag @user.get_profile_image(50,50),class:'rounded-circle' %>
 <p><%= @user.name %></p>
-<p><%= @user.introduction %></p>
-
+<p><%= @user.intoduction %></p>
+<% if @user == current_user %>
+<p><%= link_to "プロフィールを編集",edit_user_path(@user) %></p>
+<% end %>
 <% @posts.each do |posts| %>
 
 <div>
+  <%= @user.name %>
   <%= link_to post_path(posts.id) do %>
-  <%= image_tag posts.get_image %>
+  <%= image_tag posts.get_image,size:"500x400" %>
   <% end %>
+  <p><%= posts.text %></p>
 </div>
+<% end %>
+

@@ -13,6 +13,7 @@ class User::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    
   end
 
   def edit
@@ -34,6 +35,6 @@ class User::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:images,:text,:user_id)
+    params.require(:post).permit(:text,:user_id,:image)
   end
 end

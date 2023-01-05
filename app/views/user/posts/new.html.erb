@@ -4,8 +4,9 @@
       <%= form_with model: @post,url: posts_path do |f| %>
       <%= f.submit '投稿',class:"btn" %>
 
+      <i class="fa-solid fa-camera-retro">
       <%= f.file_field:image,accept:'image/*' %>
-      <i class="fa-solid fa-camera-retro"></i>
+      </i>
 
       <p><%= f.text_area:text %></p>
 

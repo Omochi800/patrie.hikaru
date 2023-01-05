@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :notifications
     resources :relationships
     resources :comments
+    resources :users
 
 
   end
