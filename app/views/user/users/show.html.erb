@@ -1,17 +1,64 @@
 <%= image_tag @user.get_profile_image(50,50),class:'rounded-circle' %>
-<p><%= @user.name %></p>
+<p><%= @user.user_name %></p>
 <p><%= @user.intoduction %></p>
+<p><%= "id: #{@user.id}" %></p>
+<p><%= "フォロー数: #{@user.follower.count}" %></p>
+<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'フォローを外す',unfollow_path(@user.id),method: :post %>
+  <% else %>
+    <%= link_to 'フォローする',follow_path(@user.id),method: :post %>
+  <% end %>
+<% end %>
+
+<h2>フォロー一覧</h2>
+<% @user.following_user.where.not(id: current_user.id).each do |user| %>
+  <p>
+  <% if current_user.following?(@user) %>
+      <%= link_to 'フォローを外す',unfollow_path(@user.id),method: :post %>
+  <% else %>
+    <%= link_to 'フォローする',follow_path(@user.id),method: :post %>
+  <% end %>
+  <%= link_to 'show',user_path(user) %>
+  </p>
+<% end %>
+
+<h2>フォロワー一覧</h2>
+<% @user.follower_user.where.not(id: current_user.id).each do |user| %>
+  <p>
+    <%= "id: #{user.id} email: #{user.email}" %>
+    <% if current_user.following?(user) %>
+      <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+    <% else %>
+      <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+    <% end %>
+    <%= link_to "show", user_path(user) %>
+  </p>
+<% end %>
 <% if @user == current_user %>
 <p><%= link_to "プロフィールを編集",edit_user_path(@user) %></p>
 <% end %>
 <% @posts.each do |posts| %>
 
 <div>
-  <%= @user.name %>
+  <%= @user.user_name %>
   <%= link_to post_path(posts.id) do %>
   <%= image_tag posts.get_image,size:"500x400" %>
   <% end %>
   <p><%= posts.text %></p>
+  <p><%#= link_to "#{@posts.comments.count} コメント", post_path(post.id) %></p>
 </div>
 <% end %>
+
+  <% @likes.each do |like| %>
+  <%= like.post.user.user_name %>
+  <%= link_to post_path(like.post) do %>
+  <p><%= image_tag like.post.get_image,size:"500x400" %></p>
+  <% end %>
+  <p><%= like.post.created_at.strftime('%Y.%m.%d') %></p>
+  <p><%= like.post.text %></p>
+  <% end %>
+
 
