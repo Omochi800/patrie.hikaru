@@ -34,6 +34,15 @@ class User::PostsController < ApplicationController
   def index
     @posts = Post.all
   end
+  
+  def search
+    if params[:keyword].present?
+      @posts = Post.where('caption LIKE ?',"%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
+  end  
 
   private
 

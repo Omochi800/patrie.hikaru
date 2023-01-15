@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'follow/:id' => 'relationships#follow', as: 'follow'
     get 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :posts do
+      get :search,on: :colection
       resources :comments, only: [:create,:destroy]
       resource :likes, only: [:create, :destroy]
     end
