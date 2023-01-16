@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     get 'follow/:id' => 'relationships#follow', as: 'follow'
     get 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :posts do
-      get :search,on: :colection
       resources :comments, only: [:create,:destroy]
       resource :likes, only: [:create, :destroy]
     end
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
     resources :notifications
     resources :relationships
     resources :users
+    get '/search', to: 'searchs#search'
 
 
   end

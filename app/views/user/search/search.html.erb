@@ -1,0 +1,21 @@
+<h4>検索結果</h4>
+
+<table class="table table-hovor table-inverse">
+    <% if @range == "User" %>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.user_name %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    <% else %>
+    <tbody>
+        <% @posts.each do |posts| %>
+        <tr>
+            <td><%= posts.text %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    <% end %>
+</table>

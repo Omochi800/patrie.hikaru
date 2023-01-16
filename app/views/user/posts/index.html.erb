@@ -12,6 +12,18 @@
           <p><%= link_to "#{@post.comments.count} コメント", post_path(@post.id) %></p>
         </div>
         <% end %>
+        <% @feeds.each do |posts| %>
+        <div>
+          <div>
+            <%= link_to posts.user.user_name,[posts.user] %>
+          </div>
+          <div>
+            <%= image_tag posts.get_image,size:"500x400" %>
+          </div>
+          <div>
+            <%= posts.text %>
+          </div>
+        </div>
     </div>
   </div>
 </div>

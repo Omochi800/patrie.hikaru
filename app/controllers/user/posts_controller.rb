@@ -33,6 +33,7 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @feeds = Post.where(user_id:[current_user.id,*current_user.followed_ids])
   end
   
   def search
