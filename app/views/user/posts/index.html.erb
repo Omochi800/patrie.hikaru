@@ -1,17 +1,10 @@
+<%= render "layouts/header" %>
 <h1>タイムライン</h1>
 <div class="container">
   <div class="row">
     <div clas="col-md-10">
-      <% @posts.each do |posts| %>
-        <p><%= image_tag 'jinnbutu.png',class:"rounded-circle",size:"50x50" %></p>
-        <p><%= posts.user.user_name %></p>
-        <div>
-          <p><%= image_tag posts.get_image,size:"500x400" %></p>
-          <p><%= posts.created_at.strftime('%Y.%m.%d') %></p>
-          <p><%= posts.text %></p>
-          <p><%= link_to "#{@post.comments.count} コメント", post_path(@post.id) %></p>
-        </div>
-        <% end %>
+
+          <p><%#= link_to "#{@post.comments.count} コメント", post_path(@post.id) %></p>
         <% @feeds.each do |posts| %>
         <div>
           <div>
@@ -24,6 +17,7 @@
             <%= posts.text %>
           </div>
         </div>
+        <% end %>
     </div>
   </div>
 </div>
