@@ -2,27 +2,32 @@
   <nav class = "navbar navbar-expand-lg navbar-light  text-white bg-info" >
 
     <div class="container">
+      <%= link_to user_path(@user) do %>
+       <%= image_tag @user.get_profile_image(50,50),class:"rounded-circle" %></p>
+       <% end %>
       <ul class="navbar-nav mx-auto">
         <li class="nav-item">
         <%= link_to user_path(current_user.id),class:"nav-link text-light btn" do %>
         <i class="fas fa-home"></i>
-         Home
+
         <% end %>
         </li>
         <li class="nav-item">
          <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light" do %>
-       <i class="fas fa-sign-out-alt"></i>  Log out
+       <i class="fas fa-sign-out-alt"></i>
          <% end%>
        <li class="nav-time">
         <% if unchecked_notifications.any? %>
         <i class= "fa fa-circle" style="color: red;"></i>
         <% end %>
           <%= link_to notifications_path,class:"nav-link text-light btn" do %>
+
           <i class="fa-solid fa-bell"></i>
           <% end %>
+
         </li>
         <li class="nav-item">
-          <%= render 'searchs/form' %>
+          <%= render "searchs/form" %>
         </li>
       </ul>
     </div>

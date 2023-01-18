@@ -32,6 +32,7 @@ class User::PostsController < ApplicationController
   end
 
   def index
+    @user =  current_user
     @posts = Post.all
     @feeds = current_user.posts.page(params[:page]).per(3)
     @likes = Like.where(user_id:current_user.id)

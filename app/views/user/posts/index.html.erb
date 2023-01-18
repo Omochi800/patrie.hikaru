@@ -1,25 +1,22 @@
 <%= render "layouts/header" %>
-<h1>タイムライン</h1>
 <div class="container">
   <div class="row">
-    <div clas="col-md-10">
+    <div class="col-md-10 mx-auto">
 
        <p><%#= link_to "#{@post.comments.count} コメント", post_path(@post.id) %></p>
 
         <div class="scroll-list jscroll">
           <% @feeds.each do |posts| %>
-          <div class="card">
-            <div class="card-body">
               <div>
+                <p>
+                  <%= link_to user_path(@user) do %>
+                  <%= image_tag posts.user.get_profile_image(50,50),class:"rounded-circle" %>
+                  <% end %>
+                  <%= posts.user.user_name %>
+                </p>
                 <%= link_to post_path(posts) do %>
-                <%= image_tag posts.user.get_profile_image(50,50),class:"rounded-circle" %>
+                <%= image_tag posts.get_image,size:"300x200" %>
                 <% end %>
-                <%= posts.user.user_name %>
-              </div>
-              <div class="card-img-top">
-                <%= image_tag posts.get_image,size:"500x400" %>
-              </div>
-              <div class="card-text">
                 <% if posts.liked_by?(current_user) %>
                 <p>
                   <%= link_to post_likes_path(posts.id),method: :delete do %>
@@ -32,12 +29,12 @@
                   <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
                   <% end %>
                 </p>
-                <%= posts.text %>
-
+                <p>
+                  <%= posts.text %>
+                </p>
               </div>
               <% end %>
-            </div>
-          </div>
+              <hr>
           <% end %>
         </div>
     </div>
