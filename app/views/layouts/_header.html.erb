@@ -18,10 +18,11 @@
         <i class= "fa fa-circle" style="color: red;"></i>
         <% end %>
           <%= link_to notifications_path,class:"nav-link text-light btn" do %>
-
           <i class="fa-solid fa-bell"></i>
           <% end %>
-
+        </li>
+        <li class="nav-item">
+          <%= render 'searchs/form' %>
         </li>
       </ul>
     </div>

@@ -12,6 +12,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+//= require jquery.jscroll.min.js
 
 Rails.start()
 Turbolinks.start()

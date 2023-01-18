@@ -6,7 +6,7 @@ class User::LikesController < ApplicationController
     like.save
     post.create_notification_like!(current_user)
     respond_to do |format|
-      formt.html {redirect_to request.referrer}
+      format.html {redirect_to request.referrer}
       format.js
     end
   end

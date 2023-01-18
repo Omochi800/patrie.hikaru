@@ -20,15 +20,15 @@ class Post < ApplicationRecord
 
   def self.looks(search,word)
     if search == "perfect_match"
-      @book = Book.where("text LIKE?","#{word}")
+      @post = Post.where("text LIKE?","#{word}")
     elsif search == "forward_match"
-      @book = Book.where("text LIKE?","#{word}%")
+      @post = Post.where("text LIKE?","#{word}%")
     elsif search == "backword_mach"
-      @book = Book.where("text LIKE?","%#{word}")
+      @post = Post.where("text LIKE?","%#{word}")
     elsif search == "partial_match"
-      @book = Book.where("text LIKE?","%#{word}%")
+      @post = Post.where("text LIKE?","%#{word}%")
     else
-      @book = Book.all
+      @post = Post.all
     end
   end
 
@@ -44,7 +44,7 @@ class Post < ApplicationRecord
         )
 
     if notification.visitor_id == notification.visited_id
-      notification.cheked = true
+      notification.checked = true
     end
     notification.save if notification.valid?
     end

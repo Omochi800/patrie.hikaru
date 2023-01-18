@@ -33,9 +33,10 @@ class User::PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @feeds = Post.where(user_id:[current_user.id,*current_user.followed_ids])
+    @feeds = current_user.posts.page(params[:page]).per(3)
+    @likes = Like.where(user_id:current_user.id)
   end
-  
+
   def search
     if params[:keyword].present?
       @posts = Post.where('caption LIKE ?',"%#{params[:keyword]}%")
@@ -43,7 +44,7 @@ class User::PostsController < ApplicationController
     else
       @posts = Post.all
     end
-  end  
+  end
 
   private
 
