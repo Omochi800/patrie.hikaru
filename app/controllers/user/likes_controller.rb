@@ -4,7 +4,11 @@ class User::LikesController < ApplicationController
     post = Post.find(params[:post_id])
     like = current_user.likes.new(post_id:post.id)
     like.save
-    redirect_to post_path(post)
+    post.create_notification_like!(current_user)
+    respond_to do |format|
+      formt.html {redirect_to request.referrer}
+      format.js
+    end
   end
 
   def destroy

@@ -1,8 +1,8 @@
 <header>
-  <nav class = "navbar navbar-expand-lg navbar-light  text-white">
+  <nav class = "navbar navbar-expand-lg navbar-light  text-white bg-info" >
 
     <div class="container">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav mx-auto">
         <li class="nav-item">
         <%= link_to user_path(current_user.id),class:"nav-link text-light btn" do %>
         <i class="fas fa-home"></i>
@@ -13,6 +13,16 @@
          <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light" do %>
        <i class="fas fa-sign-out-alt"></i>  Log out
          <% end%>
+       <li class="nav-time">
+        <% if unchecked_notifications.any? %>
+        <i class= "fa fa-circle" style="color: red;"></i>
+        <% end %>
+          <%= link_to notifications_path,class:"nav-link text-light btn" do %>
+
+          <i class="fa-solid fa-bell"></i>
+          <% end %>
+
+        </li>
       </ul>
     </div>
 </header>

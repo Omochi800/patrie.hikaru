@@ -1,9 +1,13 @@
 <%= image_tag @user.get_profile_image(50,50),class:'rounded-circle' %>
 <p><%= @user.user_name %></p>
+<hr>
 <p><%= @user.intoduction %></p>
-<p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+<hr>
+<h5>
+  <%= "フォロー数: #{@user.follower.count}" %>
+</h5>
+<h5><%= "フォロワー数: #{@user.followed.count}" %></h5>
+<hr>
 
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
@@ -40,6 +44,7 @@
 <% if @user == current_user %>
 <p><%= link_to "プロフィールを編集",edit_user_path(@user) %></p>
 <% end %>
+<hr>
 <% @posts.each do |posts| %>
 
 <div>

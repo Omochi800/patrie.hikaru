@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
     end
 
-    resources :notifications
+    resources :notifications,only: [:index]
     resources :relationships
     resources :users
     get '/search', to: 'searchs#search'

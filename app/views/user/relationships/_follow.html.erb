@@ -1,6 +1,4 @@
-<p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+
 
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
