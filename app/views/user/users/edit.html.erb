@@ -1,21 +1,30 @@
 <%= form_with model: @user,url: user_path,method: :patch do |f| %>
-<div>
-  <%= link_to 'キャンセル',user_path(@user) %>
-
-  <span>プロフィールを編集</span>
-
-  <%= f.submit '完了',class:"btn btn-primary" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to 'キャンセル',user_path(@user),class:"btn" %>
+    </div>
+    <div class="col-md-9 mx-auto">
+      <span><strong>プロフィールを編集</strong></span>
+    </div>
+    <div class="col-md-1">
+      <%= f.submit '完了',class:"btn btn-primary" %>
+    </div>
   </div>
-    <%= image_tag @user.get_profile_image(80,80),class:'rounded-circle' do %>
-    <%= f.file_field:profile_image,accept:'image/*' %>
-    <% end %>
-  <ul>
-    <li>
-      <%= f.text_field :user_name %>
-    </li>
-    <li>
-     <%= f.text_area :intoduction %>
-    </li>
-  </ul>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <%= f.file_field:profile_image,accept:'image/*' do %>
+        <%= image_tag @user.get_profile_image(100,100),class:'rounded-circle' %>
+        <% end %>
+    </div>
+    <div class="col-md-6 mx-auto">
+        <%= f.text_field :user_name, style: "border: none" %>
+    </div>
+      <hr>
+    <div class="col-md-6 mx-auto">
+        <%= f.text_area :intoduction, style: "border: none" %>
+    </div>
+    </div>
+</div>
 <% end %>
 
