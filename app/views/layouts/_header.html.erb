@@ -13,7 +13,7 @@
         <% end %>
         </li>
         <li class="nav-item">
-         <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light" do %>
+         <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light btn" do %>
        <i class="fas fa-sign-out-alt"></i>
          <% end%>
        <li class="nav-time">
@@ -24,10 +24,14 @@
 
           <i class="fa-solid fa-bell"></i>
           <% end %>
-
         </li>
         <li class="nav-item">
-          <%= render "searchs/form" %>
+          <%= render "searchs/form",class:"nav-link btn" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_post_path,class:"nav-link text-light btn" do %>
+          <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
         </li>
       </ul>
     </div>

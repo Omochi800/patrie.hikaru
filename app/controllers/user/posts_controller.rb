@@ -17,6 +17,7 @@ class User::PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments
     @likes = Like.where(user_id:current_user.id)
+    @user =  current_user
   end
 
   def edit
