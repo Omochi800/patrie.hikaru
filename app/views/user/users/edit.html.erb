@@ -4,17 +4,18 @@
 
   <span>プロフィールを編集</span>
 
-  <%= f.submit '完了' %>
-</div>
-<%= image_tag @user.get_profile_image(80,80),class:'rounded-circle' %>
-<ul>
-  <li>
-    <%= f.text_field :user_name %>
-  </li>
-  <li>
-   <%= f.text_area :intoduction %>
-  </li>
-
-</ul>
+  <%= f.submit '完了',class:"btn btn-primary" %>
+  </div>
+    <%= image_tag @user.get_profile_image(80,80),class:'rounded-circle' do %>
+    <%= f.file_field:profile_image,accept:'image/*' %>
+    <% end %>
+  <ul>
+    <li>
+      <%= f.text_field :user_name %>
+    </li>
+    <li>
+     <%= f.text_area :intoduction %>
+    </li>
+  </ul>
 <% end %>
 
