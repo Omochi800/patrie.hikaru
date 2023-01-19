@@ -1,16 +1,24 @@
+<%= render 'layouts/header' %>
+<%= form_with model: @post,url: posts_path do |f| %>
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
-      <%= form_with model: @post,url: posts_path do |f| %>
-      <%= f.submit '投稿',class:"btn" %>
-
-      <i class="fa-solid fa-camera-retro">
-      <%= f.file_field:image,accept:'image/*' %>
-      </i>
-
-      <p><%= f.text_area:text %></p>
-
-      <% end %>
+    <div class="col-md-1">
+      <p></p>
+      <p></p>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <i class="fa-solid fa-camera-retro">
+      </i>
+      <%= f.file_field:image,accept:'image/*' do %>
+      <% end %>
+      <hr>
+      <p>本文</p>
+      <p><%= f.text_area:text,style:"border: none",size:"50x10",placeholder:"ここに入力" %></p>
+      <p><%= f.submit '投稿',class:"btn btn-info" %></p>
+      <% end %>
+    </div>
+    </div>
 </div>
+

@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <%= image_tag @user.get_profile_image(80,80),class:'rounded-circle' %>
+      <%= @user.user_name %>
+      <div class="offset-8">
+        <% if @user == current_user %>
+        <%= link_to "プロフィールを編集",edit_user_path(@user),class:"btn btn-info" %>
+        <% end %>
+      </div>
+      <p><%= @user.intoduction %></p>
+      <hr>
+    <div>
+        <%= "#{@user.follower.count}" %>
+        <%= link_to relationships_path,class:"btn" do %>
+        フォロワー
+        <% end %>
+      <span></span>
+      <%= "#{@user.followed.count}" %>
+        <%= link_to relationships_path,class:"btn" do %>
+        フォロー
+        <% end %>
+    </div>
+    <hr>
+    <% unless @user == current_user %>
+      <% if current_user.following?(@user) %>
+        <%= link_to 'フォローを外す',unfollow_path(@user.id),class:"btn btn-light text-info",method: :post %>
+      <% else %>
+        <%= link_to 'フォローする',follow_path(@user.id),class:"btn btn-info text-light",method: :post %>
+      <% end %>
+    <% end %>
+    <hr>
+    <% @posts.each do |posts| %>
+    <div>
+      <p>
+        <%= image_tag @user.get_profile_image(50,50),class:"rounded-circle" %>
+      <%= @user.user_name %>
+      </p>
+      <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image,size:"500x400" %>
+      <% end %>
+      <% if posts.liked_by?(current_user) %>
+        <p>
+          <%= link_to post_likes_path(posts.id),method: :delete do %>
+          <i class="fa-solid fa-heart"></i><%= posts.likes.count %>
+          <% end %>
+          </p>
+          <% else %>
+          <p>
+          <%= link_to post_likes_path(posts.id),method: :post do %>
+          <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
+          <% end %>
+        </p>
+      <% end %>
+      <p><%= posts.text %></p>
+      <p><%= link_to "#{posts.comments.count} コメント", post_path(posts) %></p>
+    </div>
+    <hr>
+    <% end %>
+      <% @likes.each do |like| %>
+      <%= like.post.user.user_name %>
+      <%= link_to post_path(like.post) do %>
+      <p><%= image_tag like.post.get_image,size:"500x400" %></p>
+      <% end %>
+      <p><%= like.post.created_at.strftime('%Y.%m.%d') %></p>
+      <p><%= like.post.text %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
