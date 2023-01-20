@@ -1,24 +1,25 @@
 <%= render 'layouts/header' %>
 <%= form_with model: @post,url: posts_path do |f| %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-1">
-      <p></p>
-      <p></p>
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4">
+    <div class="card-body">
+      <div class="row">
+      <div class="col-6">
+        <p class="card-title">
+          <i class="fa-solid fa-camera-retro">
+          </i>
+          <%= f.file_field:image,accept:'image/*' do %>
+          <% end %>
+        </p>
+        <hr>
+          <p class="card-text">本文
+            <%= f.text_area:text,style:"border: none",size:"50x10",placeholder:"ここに入力" %></p>
+            <%= f.submit '投稿',class:"btn btn-info" %>
+          </p>
+      </div>
+    </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6 mx-auto">
-      <i class="fa-solid fa-camera-retro">
-      </i>
-      <%= f.file_field:image,accept:'image/*' do %>
-      <% end %>
-      <hr>
-      <p>本文</p>
-      <p><%= f.text_area:text,style:"border: none",size:"50x10",placeholder:"ここに入力" %></p>
-      <p><%= f.submit '投稿',class:"btn btn-info" %></p>
-      <% end %>
-    </div>
-    </div>
 </div>
+<% end %>
 
