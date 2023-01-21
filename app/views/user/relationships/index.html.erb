@@ -1,0 +1,82 @@
+  <div class="row">
+    <div class="mx-auto">
+      <ul class="nav nab-tabs" role="tablist">
+        <li class="active" role="presentation" style="bg-info">
+          <a aria-controls="post" data-toggle="tab" href="#tab_post" role="tab">投稿</a>
+        </li>
+        <li class="presentation">
+          <a aria-controls="like" data-toggle="tab" href="#tab_like" role="tab">いいね</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_post" role="tabpanel">
+          <div class="card-list-container py-5">
+            <% @posts.each do |posts| %>
+            <div class="card-head">
+              <div class="row">
+                <div class="col-4">
+                  <%= image_tag @user.get_profile_image(90,90),class:"rounded-circle"; %>
+                  <%= @user.user_name %>
+                </div>
+              </div>
+            </div>
+                <%= link_to post_path(posts.id) do %>
+                <%= image_tag posts.get_image %>
+                <% end %>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-10">
+                  <p class="card-title">
+                    <% if posts.liked_by?(current_user) %>
+                      <%= link_to post_likes_path(posts.id),method: :delete do %>
+                      <i class="fa-solid fa-heart"></i><%= posts.likes.count %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to post_likes_path(posts.id),method: :post do %>
+                      <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
+                      <% end %>
+                  </p>
+                    <p class="card-text">
+                      <%= posts.text %>
+                    </p>
+                    <span><%= link_to "#{posts.comments.count} コメント", post_path(posts) %></span>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+
+        <div class="tab-pane active" id="tab_like" role="tabpanel">
+         <div class="card-list-container py-5">
+            <% @likes.each do |like| %>
+            <div class="card-head">
+              <div class="row">
+                <div class="col-4">
+                  <%= image_tag like.post.user.get_profile_image(90,90),class:"rounded-circle"; %>
+                  <%= like.post.user.user_name %>
+                </div>
+              </div>
+            </div>
+            <%= link_to post_path(like.post) do %>
+            <%= image_tag like.post.get_image %>
+            <% end %>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-10">
+                  <p class="card-title">
+                    <%= like.post.created_at.strftime('%Y.%m.%d') %>
+                  </p>
+                  <p class="card-text">
+                    <%= like.post.text %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

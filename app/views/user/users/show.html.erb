@@ -29,7 +29,18 @@
         <%= link_to 'フォローする',follow_path(@user.id),class:"btn btn-info text-light",method: :post %>
       <% end %>
     <% end %>
-    <hr>
+
+    <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item w-50 bg-light">
+    <a class="nav-link active link-text" id="post-tab" data-toggle="tab" href="#post" role="tab" aria-controls="post" aria-selected="true">投稿</a>
+  </li>
+  <li class="nav-item w-50 bg-light">
+    <a class="nav-link link-text" id="like-tab" data-toggle="tab" href="#like" role="tab" aria-controls="like" aria-selected="false">いいね</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
     <% @posts.each do |posts| %>
     <div>
       <p>
@@ -39,24 +50,25 @@
       <%= link_to post_path(posts.id) do %>
       <%= image_tag posts.get_image,size:"500x400" %>
       <% end %>
-      <% if posts.liked_by?(current_user) %>
+        <% if posts.liked_by?(current_user) %>
         <p>
           <%= link_to post_likes_path(posts.id),method: :delete do %>
           <i class="fa-solid fa-heart"></i><%= posts.likes.count %>
           <% end %>
           </p>
-          <% else %>
+        <% else %>
           <p>
           <%= link_to post_likes_path(posts.id),method: :post do %>
           <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
           <% end %>
+        <% end %>
         </p>
-      <% end %>
       <p><%= posts.text %></p>
       <p><%= link_to "#{posts.comments.count} コメント", post_path(posts) %></p>
+      <% end %>
     </div>
-    <hr>
-    <% end %>
+　</div>
+　<div class="mb-5 tab-pane fade" id="like" role="tabpanel" aria-labelledby="like-tab">
       <% @likes.each do |like| %>
       <%= like.post.user.user_name %>
       <%= link_to post_path(like.post) do %>
@@ -65,6 +77,5 @@
       <p><%= like.post.created_at.strftime('%Y.%m.%d') %></p>
       <p><%= like.post.text %></p>
       <% end %>
-    </div>
-  </div>
+　</div>
 </div>
