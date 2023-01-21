@@ -1,4 +1,4 @@
-<h2>ログイン</h2>
+<%= render "user/shared/links" %>
 
 <%= form_with model: @usr,url: user_session_path do |f| %>
   <div class="field">
@@ -22,5 +22,3 @@
     <%= f.submit "ログイン",class:"btn"%>
   </div>
 <% end %>
-
-<%= render "user/shared/links" %>

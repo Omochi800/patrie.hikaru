@@ -1,4 +1,4 @@
-<h2>新規登録</h2>
+<%= render "user/shared/links" %>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "user/shared/error_messages", resource: resource %>
@@ -36,4 +36,4 @@
   </div>
 <% end %>
 
-<%= render "user/shared/links" %>
+
