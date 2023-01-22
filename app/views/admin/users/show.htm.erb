@@ -47,6 +47,29 @@
         </tbody>
       </table>
     </div>
+    <% @posts.each do |posts| %>
+      <p>
+        <%= image_tag @user.get_profile_image(90,90),class:"rounded-circle" %>
+      <%= @user.user_name %>
+      </p>
+      <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image,size:"500x400" %>
+      <% end %>
+        <% if posts.liked_by?(current_user) %>
+        <p>
+          <%= link_to post_likes_path(posts.id),method: :delete do %>
+          <i class="fa-solid fa-heart"></i><%= posts.likes.count %>
+          <% end %>
+          </p>
+        <% else %>
+          <p>
+          <%= link_to post_likes_path(posts.id),method: :post do %>
+          <i class="fa-regular fa-heart"></i><%= posts.likes.count %>
+          <% end %>
+        <% end %>
+        </p>
+      <p><%= posts.text %></p>
+      <% end %>
   </div>
 </div>
 
