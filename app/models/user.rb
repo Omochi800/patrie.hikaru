@@ -60,4 +60,8 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end

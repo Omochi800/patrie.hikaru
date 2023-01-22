@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :relationships
     resources :users
     get '/search', to: 'searchs#search'
+    get "/user/unsubscribe" => "users#unsubscribe"
+    patch "/user/withdraw" => "users#withdraw"
 
 
   end

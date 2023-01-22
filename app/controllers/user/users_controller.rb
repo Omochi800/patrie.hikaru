@@ -16,6 +16,13 @@ class User::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_path(current_user.id)
   end
+  
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
 
   private
 
