@@ -1,0 +1,54 @@
+<div class="col-md-4 text-center">
+      <p class="bg-light"><%= @user.user_name %>
+  さんのユーザ情報編集</p>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 offset-md-4">
+      <%= form_with model: @user,url: admin_user_path,method: :patch do |f| %>
+      <table>
+        <tr>
+        <td><div class="form-group">
+        <label>会員ID</label></td>
+        <td colspan="2"></td>
+        <td><%= @user.id %></td>
+      </div>
+        </tr>
+      <div class="form-group">
+        <tr>
+        <td><label>ユーザ名</label></td>
+        <td colspan="2"></td>
+        <td><%= f.text_field:user_name,autofocus:true %>
+        </td>
+        </tr>
+      </div>
+      <div class="form-group">
+        <tr>
+        <td><label>メールアドレス</label></td>
+        <td colspan="2"></td>
+        <td><%= f.text_field:email,autofocus:true %></td>
+        </tr>
+      </div>
+      <div class="form-group">
+        <tr>
+        <td><label>ステータス</label></td>
+        <td colspan="2"></td>
+        <td>
+          <%= f.radio_button :is_deleted,false %>
+          <%= f.label :is_deleted,'有効',value:false %>
+          <%= f.radio_button :is_deleted,true %>
+          <%= f.label :is_deleted,'退会',value:true %>
+        </td>
+      </div>
+        </tr>
+        <tr>
+          <td><%= f.submit '変更を保存',class:'btn btn-sm btn-success' %>
+          </td>
+        </tr>
+
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
