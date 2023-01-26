@@ -12,7 +12,6 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
-import '../stylesheets/header.css'
 //= require jquery.jscroll.min.js
 
 Rails.start()

@@ -52,8 +52,10 @@
         <%= image_tag @user.get_profile_image(90,90),class:"rounded-circle" %>
       <%= @user.user_name %>
       </p>
+      <% @posts.get_image.each do |image| %>
       <%= link_to post_path(posts.id) do %>
-      <%= image_tag posts.get_image,size:"500x400" %>
+      <%= image_tag posts.image,size:"500x400" %>
+      <% end %>
       <% end %>
         <% if posts.liked_by?(current_user) %>
         <p>

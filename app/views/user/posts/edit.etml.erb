@@ -1,4 +1,26 @@
-<%#= form_with model:
+<%= form_with model: @post,url: post_path(@post.id),method: :patch,local;true do |f| %>
+
+<div class="card-list-container py-5">
+  <div class="card w-50 mx-auto mt-4">
+    <div class="card-body">
+      <div class="row">
+      <div class="col-6">
+        <p class="card-title">
+          <i class="fa-solid fa-camera-retro">
+          </i>
+              <%= image_tag get_image,size:"500x400" %>
+        </p>
+        <hr>
+          <p class="card-text">本文
+            <%= f.text_area:text,style:"border: none",size:"50x10",placeholder:"ここに入力" %></p>
+            <%= f.submit '編集を完了する',class:"btn btn-info" %>
+          </p>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 
 

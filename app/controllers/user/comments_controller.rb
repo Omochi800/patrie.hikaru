@@ -6,7 +6,7 @@ class User::CommentsController < ApplicationController
     @comment.post_id = @post.id
     @comment.save
     @post.create_notification_comment!(current_user, @comment.id)
-    render :index
+    redirect_to post_path(@post)
   end
 
   def destroy
