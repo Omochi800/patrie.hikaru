@@ -2,13 +2,17 @@ Rails.application.routes.draw do
 
   devise_for :admin
 
-  devise_for :user,path: 'patrie'
+  devise_for :user, controllers: {
+  registrations: "user/registrations",
+  sessions: 'user/sessions'
+}
 
   namespace :admin do
 
   end
   scope module: :user do
     root 'homes#top'
+    resources :users
     get 'follow/:id' => 'relationships#follow', as: 'follow'
     get 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :posts do
@@ -18,7 +22,6 @@ Rails.application.routes.draw do
 
     resources :notifications,only: [:index]
     resources :relationships
-    resources :users
     get '/search', to: 'searchs#search'
     get "/user/unsubscribe" => "users#unsubscribe"
     patch "/user/withdraw" => "users#withdraw"
