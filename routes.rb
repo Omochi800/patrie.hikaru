@@ -1,15 +1,20 @@
 Rails.application.routes.draw do
 
-  devise_for :admin
-
-  devise_for :user, controllers: {
-  registrations: "user/registrations",
-  sessions: 'user/sessions'
+  devise_for :users,:controllers => {
+  :registrations => 'users/registrations',
+  :sessions => 'users/sessions'
+}
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
 }
 
+
   namespace :admin do
+    resources :posts
+    resources:users
 
   end
+
   scope module: :user do
     root 'homes#top'
     resources :users
@@ -22,7 +27,7 @@ Rails.application.routes.draw do
 
     resources :notifications,only: [:index]
     resources :relationships
-    get '/search', to: 'searchs#search'
+    get '/search', to: 'searches#search'
     get "/user/unsubscribe" => "users#unsubscribe"
     patch "/user/withdraw" => "users#withdraw"
 
