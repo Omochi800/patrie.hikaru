@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users,:controllers => {
-  :registrations => 'users/registrations',
-  :sessions => 'users/sessions'
-}
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :user
+  devise_for :admin
 
 
   namespace :admin do
@@ -23,12 +18,12 @@ Rails.application.routes.draw do
       resources :comments, only: [:create,:destroy]
       resource :likes, only: [:create, :destroy]
     end
-    get "/search" => "searches#search"
 
     resources :notifications,only: [:index]
     resources :relationships
     get "/user/unsubscribe" => "users#unsubscribe"
     patch "/user/withdraw" => "users#withdraw"
+    get "/search" => "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
