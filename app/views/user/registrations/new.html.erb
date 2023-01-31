@@ -5,33 +5,33 @@
   <div class="card w-50 mx-auto mt-4">
     <div class="card-body">
       <div class="row">
-      <div class="col-6">
+      <div class="col-7 mx-auto">
           <p class="card-text">
+            <h4 class="text-center">Signup</h4>
             <p class="field">
-              <%= f.label :名前 %><span></span>
-              <%= f.text_field:name %>
+              <%= f.text_field:name,style:"border: none",placeholder:"名前" %>
             </p>
+            <hr>
             <p class="field">
-              <%= f.label :ユーザ名 %>
-              <%= f.text_field:user_name %>
+              <%= f.text_field:user_name,style:"border: none",placeholder:"ユーザー名" %>
             </p>
+            <hr>
             <p class="field">
-              <%= f.label :メールアドレス %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",style:"border: none",placeholder:"メールアドレス" %>
             </p>
+            <hr>
             <p class="field">
-              <%= f.label :パスワード %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %>
-              <%= f.password_field :password, autocomplete: "new-password" %>
+              <%= f.password_field :password, autocomplete: "new-password",style:"border: none",placeholder:"パスワード" %>
             </p>
+            <hr>
             <p class="field">
-              <%= f.label :パスワード（確認用） %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password",style:"border: none",placeholder:"パスワード（確認用）" %>
             </p>
-            <p class="action">
-              <%= f.submit "新規登録",class:'btn' %>
+            <p class="action text-center">
+              <%= f.submit "新規登録",class:'btn btn-info' %>
             </p>
           </p>
       </div>

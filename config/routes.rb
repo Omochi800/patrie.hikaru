@@ -16,13 +16,12 @@ Rails.application.routes.draw do
   end
   scope module: :user do
     root 'homes#top'
-    get 'follow/:id' => 'relationships#follow', as: 'follow'
-    get 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :posts do
       resources :comments, only: [:create,:destroy]
       resource :likes, only: [:create, :destroy]
     end
-
+    post 'follow/:id' => 'relationships#follow', as: 'follow'
+    post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
     resources :notifications,only: [:index]
     resources :relationships
     resources :users

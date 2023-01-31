@@ -14,10 +14,10 @@ class User::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = User.find(@post.user.id)
     @comment = Comment.new
     @comments = @post.comments
     @likes = Like.where(user_id:current_user.id)
-    @user =  current_user
   end
 
   def edit

@@ -1,20 +1,17 @@
 <%= render "user/shared/links" %>
-<h4>ログイン</h4>
 <%= form_with model: @user,url: user_session_path do |f| %>
 <div class="card-list-container py-5">
   <div class="card w-50 mx-auto mt-4">
     <div class="card-body">
       <div class="row">
-      <div class="col-6">
+      <div class="col-4 mx-auto">
           <p class="card-text">
+            <h4 class="text-center">Login</h4>
             <p class="field">
-              <%= f.label :メールアドレス %>
-              <%= f.email_field :email, autofocus: true,style:"border: none", autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true,style:"border: none", autocomplete: "email",placeholder:"email",size:"20x30" %>
             </p>
             <p class="field">
-              <%= f.label :パスワード %>
-
-                <%= f.password_field :password, autocomplete: "current-password",style:"border: none" %>
+                <%= f.password_field :password, autocomplete: "current-password",style:"border: none",placeholder:"password" %>
             </p>
               <% if devise_mapping.rememberable? %>
                 <p class="field">
@@ -22,7 +19,9 @@
                   <%= f.label :remember_me %>
                 </p>
               <% end %>
-              <%= f.submit "ログイン",class:"btn"%>
+              <p class="action text-center">
+                <%= f.submit "ログイン",class:"btn btn-info"%>
+              </p>
           </p>
       </div>
     </div>
