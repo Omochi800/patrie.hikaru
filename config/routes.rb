@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-
+    resources :posts
+    resources :users
   end
   scope module: :user do
     root 'homes#top'
