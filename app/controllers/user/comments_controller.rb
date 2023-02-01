@@ -4,9 +4,14 @@ class User::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    @comment.save
-    @post.create_notification_comment!(current_user, @comment.id)
-    redirect_to post_path(@post)
+    if @comment.save
+      flash[:success] = 'コメントしました'
+      @post = @comment.post
+      @post.create_notification_comment!(current_user, @comment.id)
+      redirect_to @comment.post
+    else
+      render templete: 'posts/show'
+    end  
   end
 
   def destroy

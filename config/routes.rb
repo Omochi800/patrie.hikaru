@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
     post 'follow/:id' => 'relationships#follow', as: 'follow'
     post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
-    resources :notifications,only: [:index]
+    resources :notifications,only: [:index,:destroy]
     resources :relationships
     resources :users
     get "/user/unsubscribe" => "users#unsubscribe"
