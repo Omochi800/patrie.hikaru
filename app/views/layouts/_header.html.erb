@@ -2,8 +2,8 @@
   <nav class = "navbar navbar-expand-lg navbar-light  text-white bg-info">
 
     <div class="container">
-      <%= link_to user_path(@user) do %>
-       <%= image_tag @user.get_profile_image(90,90),class:"rounded-circle"; %></p>
+      <%= link_to user_path(current_user) do %>
+       <%= image_tag current_user.get_profile_image(90,90),class:"rounded-circle"; %></p>
        <% end %>
       <ul class="navbar-nav">
         <li class="nav-item">
