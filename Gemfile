@@ -60,6 +60,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'rename'
 gem 'image_processing', '~> 1.2'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari'
 gem 'net-smtp'
 gem 'pry-rails'

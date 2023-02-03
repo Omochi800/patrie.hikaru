@@ -1,9 +1,11 @@
 <div class="container">
     <div class="row">
-        <h2>patrie</h2>
+        <%= image_tag('patrie.icon.png') %>
     </div>
 
-    <%= link_to 'ログイン',new_user_session_path,class:"btn btn-info" %>
+    <div>
+        <%= link_to 'ログイン',new_user_session_path,class:"btn btn-info" %>
 
-    <%= link_to '新規登録',new_user_registration_path,class:"btn btn-info" %>
+        <%= link_to '新規登録',new_user_registration_path,class:"btn btn-info" %>
+    </div>
 </div>
