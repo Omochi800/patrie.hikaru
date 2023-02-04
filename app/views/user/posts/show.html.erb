@@ -2,10 +2,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <% if @post.user == current_user %>
-            <%= link_to '編集する',edit_post_path,class:'btn btn-info' %>
-            <%= link_to '削除する',post_path(@post),method: :delete,class:"btn btn-danger" %>
-      <% end %>
       <p><%= link_to user_path(@user) do %>
        <%= image_tag @post.user.get_profile_image(50,50),class:"rounded-circle" %>
        <% end %>
@@ -50,6 +46,11 @@
         <%= link_to '削除',post_comment_path(comment.post,comment),method: :delete %>
         <% end %>
         </p>
+        <% end %>
+        <%= link_to '戻る',posts_path,class:"btn btn-light" %>
+        <% if @post.user == current_user %>
+            <%= link_to '編集する',edit_post_path,class:'btn btn-info' %>
+            <%= link_to '削除する',post_path(@post),method: :delete,class:"btn btn-danger" %>
         <% end %>
 
       </div>

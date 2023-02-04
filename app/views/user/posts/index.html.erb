@@ -13,7 +13,9 @@
         </div>
       </div>
     </div>
+    <%= link_to post_path(posts) do %>
     <%= image_tag posts.get_image,class:"card-img-top" %>
+    <% end %>
 
     <div class="card-body">
       <div class="row">

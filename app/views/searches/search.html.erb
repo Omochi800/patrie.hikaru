@@ -5,6 +5,11 @@
     <tbody>
         <% @users.each do |user| %>
         <tr>
+            <td>
+                <%= link_to user_path(user) do %>
+                <%= image_tag user.get_profile_image(80,80) %>
+                <% end %>
+            </td>
             <td><%= link_to user_path(user) do %>
                 <%= user.user_name %>
                 <% end %>
