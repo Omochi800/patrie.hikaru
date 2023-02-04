@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/6f0d38cdd3.js" crossorigin="anonynous"></script>
@@ -18,7 +17,7 @@
       <nav class = "navbar navbar-expand-lg navbar-light  text-white bg-info">
 
       <div class="container">
-      <a class="navbar-brand p-3 rounded-circle" href="/"><%= image_tag('patrie.icon.png') %></a>
+      <a class="navbar-brand" href="/"><%= image_tag('icon.png',size:"80x80") %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

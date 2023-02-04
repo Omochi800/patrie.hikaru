@@ -1,11 +1,19 @@
-<div class="container">
-    <div class="row">
-        <%= image_tag('patrie.icon.png') %>
-    </div>
+<div class="card-list-container py-4">
+  <div class="card w-50 mx-auto mt-4">
+    <div class="card-body mx-auto">
+      <div class="row">
+      <div class="col-5">
+        <p class="card-title">
+            <%= image_tag('patrie.icon.png') %>
+        </p>
+        <p class="card-text text-right">
 
-    <div>
         <%= link_to 'ログイン',new_user_session_path,class:"btn btn-info" %>
 
         <%= link_to '新規登録',new_user_registration_path,class:"btn btn-info" %>
+        </p>
+       </div>
+       </div>
     </div>
+  </div>
 </div>

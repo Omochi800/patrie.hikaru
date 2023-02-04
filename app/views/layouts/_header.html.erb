@@ -1,12 +1,15 @@
 <header>
   <nav class = "navbar navbar-expand-lg navbar-light  text-white bg-info">
 
-      <%= link_to user_path(current_user) do %>
-       <%= image_tag current_user.get_profile_image(90,90),class:"rounded-circle"; %></p>
-       <% end %>
-      <ul class="navbar-nav">
+
+      <ul class="navbar-nav ml-auto">
+        <div class="nav-item">
+          <%= link_to user_path(current_user) do %>
+           <%= image_tag current_user.get_profile_image(90,90),class:"rounded-circle"; %></p>
+          <% end %>
+        </div>
         <li class="nav-item">
-        <%= link_to user_path(current_user.id),class:"nav-link text-light btn" do %>
+        <%= link_to posts_path,class:"nav-link text-light btn" do %>
         <i class="fas fa-home"></i>
 
         <% end %>
