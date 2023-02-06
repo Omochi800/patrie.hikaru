@@ -1,4 +1,5 @@
 class User::PostsController < ApplicationController
+  before_action :authenticate_user!
   def new
     @post = Post.new
     @user =  current_user
@@ -21,16 +22,25 @@ class User::PostsController < ApplicationController
   end
 
   def edit
-
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+  if@post.update(post_params)
+    redirect_to post_path(@post)
+  else
+    render :edit
+  end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+  if  @post.destroy
     redirect_to posts_path
+  else
+    render :show
+  end
   end
 
   def index

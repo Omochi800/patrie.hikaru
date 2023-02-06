@@ -2,9 +2,9 @@
 
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
-    <%= link_to 'フォローを外す',unfollow_path(@user.id),method::post %>
+    <%= link_to 'フォローを外す',unfollow_path(@user.id),class:"btn btn-light text-info",method::post %>
   <% else %>
-    <%= link_to 'フォローする',follow_path(@user.id),method::post %>
+    <%= link_to 'フォローする',follow_path(@user.id),class:"btn btn-light text-info",method::post %>
   <% end %>
 <% end %>
 
@@ -12,9 +12,9 @@
 <% @user.following_user.where.not(id: current_user.id).each do |user| %>
   <p>
   <% if current_user.following?(@user) %>
-      <%= link_to 'フォローを外す',unfollow_path(@user.id),method::post %>
+      <%= link_to 'フォローを外す',unfollow_path(@user.id),class:"btn btn-light text-info",method::post %>
   <% else %>
-    <%= link_to 'フォローする',follow_path(@user.id),method::post %>
+    <%= link_to 'フォローする',follow_path(@user.id),class:"btn btn-light text-info",method::post %>
   <% end %>
   <%= link_to 'show',user_path(user) %>
   </p>
@@ -25,9 +25,9 @@
   <p>
     <%= "id: #{user.id} email: #{user.email}" %>
     <% if current_user.following?(user) %>
-      <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+      <%= link_to 'フォロー外す', unfollow_path(user.id),class:"btn btn-light text-info", method: :POST %>
     <% else %>
-      <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+      <%= link_to 'フォローする', follow_path(user.id),class:"btn btn-light text-info", method: :POST %>
     <% end %>
     <%= link_to "show", user_path(user) %>
   </p>

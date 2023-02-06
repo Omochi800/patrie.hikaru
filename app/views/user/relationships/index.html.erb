@@ -1,4 +1,4 @@
- <%= render "layouts/header" %>
+<%= render "layouts/header" %>
  <ul class="text-center nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item w-50 bg-light">
     <a class="nav-link active link-text" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="true">フォロー</a>
@@ -13,13 +13,14 @@
     <div class="ml-1 mt-3 mb-2">全フォロー数: <%= @user.follower.count %>人</div>
       <% @user.following_user.where.not(id: current_user.id).each do |user| %>
        <p>
-         <%= "id: #{user.id} email: #{user.email}" %>
+         <%= image_tag user.get_profile_image(80,80) %>
+          <%= user.user_name %>
          <% if current_user.following?(user) %>
-           <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+           <%= link_to 'フォロー外す', unfollow_path(user.id),class:"btn btn-light text-info", method: :POST %>
          <% else %>
-           <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+           <%= link_to 'フォローする', follow_path(user.id),class:"btn btn-light text-info", method: :POST %>
          <% end %>
-         <%= link_to "show", user_path(user) %>
+         <%= link_to "詳細", user_path(user),class:"btn btn-light text-info" %>
        </p>
       <% end %>
 　</div>
@@ -27,13 +28,14 @@
     <div class="ml-1 mt-5 mb-2">全フォロワー数: <%= @user.followed.count %>人</div>
       <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
         <p>
-          <%= "id: #{user.id} email: #{user.email}" %>
+          <%= image_tag user.get_profile_image(80,80) %>
+          <%= user.user_name %>
           <% if current_user.following?(user) %>
-            <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+            <%= link_to 'フォロー外す', unfollow_path(user.id),class:"btn btn-light text-info", method: :POST %>
           <% else %>
-            <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+            <%= link_to 'フォローする', follow_path(user.id),class:"btn btn-light text-info", method: :POST %>
           <% end %>
-          <%= link_to "show", user_path(user) %>
+          <%= link_to "詳細", user_path(user),class:"btn btn-light text-info" %>
         </p>
       <% end %>
 　</div>
