@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   scope module: :user do
     root 'homes#top'
+    get '/about' => 'homes#about'
     resources :posts do
       resources :comments, only: [:create,:destroy]
       resource :likes, only: [:create, :destroy]

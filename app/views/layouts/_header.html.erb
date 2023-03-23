@@ -7,7 +7,12 @@
           <%= link_to user_path(current_user) do %>
            <%= image_tag current_user.get_profile_image(90,90),class:"rounded-circle"; %></p>
           <% end %>
-        </div>
+        </div
+        <li class="nav-item">
+        <%= link_to posts_path,class:"nav-link text-light btn" do %>
+        <i class="fa-solid fa-at"></i>
+        </li>
+        
         <li class="nav-item">
         <%= link_to posts_path,class:"nav-link text-light btn" do %>
         <i class="fas fa-home"></i>

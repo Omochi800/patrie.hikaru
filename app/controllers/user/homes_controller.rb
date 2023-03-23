@@ -1,5 +1,8 @@
 class User::HomesController < ApplicationController
   before_action :authenticate_user!
   def top
-  end  
+  end
+
+  def about
+  end
 end
