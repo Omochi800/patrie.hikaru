@@ -18,18 +18,13 @@
 
       <div class="container">
       <% if admin_signed_in? %>
-      <a class="navbar-brand" href="/admin"><%= image_tag('admin.icon.png',size:"80x80") %></a>
+      <a class="navbar-brand p-3" href="/admin"><%= image_tag('admin.icon.png',size:"80x80") %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
       </button>
       <% elsif user_signed_in? %>
-      <a class="navbar-brand" href="/"><%= image_tag('icon.png',size:"80x80") %></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-      </button>
-
+      
       <% end %>
       </div>
     </header>
