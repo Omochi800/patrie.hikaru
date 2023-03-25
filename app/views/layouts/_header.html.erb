@@ -14,19 +14,19 @@
         </div>
         <li class="nav-item">
         <%= link_to about_path,class:"nav-link text-light btn" do %>
-        <i class="fa-solid fa-at"></i>
+        <i class="fa-solid fa-at">アバウト</i>
         <% end %>
         </li>
 
         <li class="nav-item">
         <%= link_to posts_path,class:"nav-link text-light btn" do %>
-        <i class="fas fa-home"></i>
+        <i class="fa-solid fa-house">ホーム</i>
 
         <% end %>
         </li>
         <li class="nav-item">
          <%= link_to destroy_user_session_path,method: :delete,class:"nav-link text-light btn" do %>
-         <i class="fas fa-sign-out-alt"></i>
+        <i class="fa-solid fa-right-from-bracket">ログアウト</i>
          <% end%>
         </li>
         <li class="nav-time">
@@ -35,7 +35,7 @@
         <% end %>
           <%= link_to notifications_path,class:"nav-link text-light btn" do %>
 
-          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-bell">通知</i>
           <% end %>
         </li>
         <li class="nav-item">
@@ -43,7 +43,7 @@
         </li>
         <li class="nav-item">
           <%= link_to new_post_path,class:"nav-link text-light btn" do %>
-          <i class="fa-regular fa-pen-to-square"></i>
+          <i class="fa-regular fa-pen-to-square">投稿</i>
           <% end %>
         </li>
       </ul>
